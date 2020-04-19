@@ -29,6 +29,7 @@ public abstract class SpringBootEmbeddedKafka {
     @BeforeClass
     public static void setUpClass() {
         //FIXME: Couldn't find kafka server configurations - kafka server is listening on a random port so i overwrite the client config here should be other way around
+        // System.setProperty("spring.kafka.bootstrap-servers", "${spring.embedded.kafka.brokers}");
         System.setProperty("spring.kafka.bootstrap-servers", embeddedKafka.getBrokersAsString());
         System.setProperty("spring.cloud.stream.kafka.binder.zkNodes", embeddedKafka.getZookeeperConnectionString());
     }
